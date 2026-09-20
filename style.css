@@ -1,4 +1,4 @@
-¡Qué excelente paleta de colores! Con esos códigos HEX exactos de BanBif (#2393FF para el azul brillante, #8B52FA para el violeta/púrpura y #B2D812 para el verde lima de acento), la página va a quedar 100% fiel a la marca oficial del banco.   Solo necesitas actualizar tu archivo style.css en GitHub para aplicar el gradiente diagonal exacto y cambiar todos los botones y acentos al verde lima oficial.PASO ÚNICO: Reemplazar el código en style.cssEntra a GitHub y abre el archivo style.css dentro de tu repositorio banbif-talento-estudiantes.Haz clic en el icono del lápiz (✏️ Edit this file).Borra todo lo que tiene actualmente y pega este código ajustado con la paleta de colores oficial:CSS* {
+* {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
