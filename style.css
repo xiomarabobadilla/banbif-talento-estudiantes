@@ -10,12 +10,33 @@ body {
   color: #1e293b;
 }
 
-/* HEADER CON EL GRADIENTE DIAGONAL OFICIAL DE BANBIF */
+/* HEADER CON COLLAGE DE FONDO Y GRADIENTE OFICIAL */
 .hero-header {
-  background: linear-gradient(135deg, #2393FF 0%, #8B52FA 100%);
+  position: relative;
+  /* Imagen de fondo del collage (reemplaza el enlace por la ruta de tu foto si la subes a GitHub) */
+  background-image: url('https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=1200&q=80');
+  background-size: cover;
+  background-position: center;
   color: #ffffff;
   text-align: center;
-  padding: 45px 20px 85px 20px;
+  padding: 55px 20px 95px 20px;
+  overflow: hidden;
+}
+
+/* CAPA GRADIENTE MEZCLADA EN DIAGONAL (AZUL A VIOLETA) */
+.hero-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, rgba(35, 147, 255, 0.88) 0%, rgba(139, 82, 250, 0.88) 100%);
+  z-index: 1;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
 }
 
 .logo-box {
@@ -24,7 +45,7 @@ body {
   padding: 8px 24px;
   border-radius: 12px;
   margin-bottom: 20px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
 }
 
 .logo-text {
@@ -35,24 +56,24 @@ body {
   position: relative;
 }
 
-/* PUNTO LIMA/VERDE SOBRE LA 'i' EN EL LOGO */
 .logo-text::after {
   content: "°";
   color: #B2D812;
   font-size: 1.8rem;
   position: absolute;
   top: -6px;
-  right: 12px;
+  right: -12px;
 }
 
 .main-title {
-  font-size: 2.3rem;
+  font-size: 2.4rem;
   font-weight: 800;
   letter-spacing: 1px;
+  text-shadow: 0 2px 8px rgba(0,0,0,0.2);
 }
 
 .tagline {
-  font-size: 0.95rem;
+  font-size: 1rem;
   opacity: 0.95;
   margin-top: 5px;
   font-weight: 600;
@@ -63,6 +84,8 @@ body {
   max-width: 1100px;
   margin: -50px auto 40px auto;
   padding: 0 20px;
+  position: relative;
+  z-index: 3;
 }
 
 .cards-grid {
@@ -81,7 +104,7 @@ body {
   background: #ffffff;
   border-radius: 16px;
   padding: 28px;
-  box-shadow: 0 10px 25px rgba(139, 82, 250, 0.08);
+  box-shadow: 0 10px 25px rgba(139, 82, 250, 0.1);
 }
 
 .card-primary h2 {
@@ -153,7 +176,7 @@ body {
   color: #64748b;
 }
 
-/* BOTÓN PRINCIPAL EN VERDE LIMA OFICIAL CON TEXTO OSCURO/BLANCO */
+/* BOTÓN VERDE LIMA BANBIF */
 .btn-primary {
   width: 100%;
   background: #B2D812;
@@ -165,7 +188,7 @@ body {
   font-size: 1rem;
   cursor: pointer;
   transition: all 0.2s;
-  box-shadow: 0 4px 12px rgba(178, 216, 18, 0.3);
+  box-shadow: 0 4px 12px rgba(178, 216, 18, 0.35);
 }
 
 .btn-primary:hover {
@@ -173,7 +196,7 @@ body {
   transform: translateY(-1px);
 }
 
-/* TARJETA SECUNDARIA (CONÓCENOS) */
+/* TARJETA SECUNDARIA */
 .card-secondary {
   display: flex;
   gap: 15px;
@@ -213,7 +236,7 @@ body {
   text-decoration: none;
 }
 
-/* BANNER DE NOVEDADES EN PÚRPURA DE LA PALETA */
+/* BANNER DE NOVEDADES */
 .section-banner {
   background: linear-gradient(90deg, #8B52FA 0%, #2393FF 100%);
   color: #ffffff;
@@ -233,7 +256,7 @@ body {
   font-weight: 700;
 }
 
-/* CARDS DE OFERTAS LABORALES */
+/* OFERTAS LABORALES */
 .jobs-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -306,7 +329,7 @@ body {
   background: #1a74cc;
 }
 
-/* SECCIÓN DE VIDEOS */
+/* VIDEOS */
 .video-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
