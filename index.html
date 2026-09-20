@@ -1,54 +1,133 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>BanBif | Tu próximo paso empieza aquí</title>
-
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BanBif | Oportunidades para Estudiantes</title>
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&display=swap" rel="stylesheet">
 </head>
-
 <body>
 
-    <main class="hero">
+  <!-- HEADER DE BIENVENIDA -->
+  <header class="hero-header">
+    <div class="logo-box">
+      <span class="logo-text">BanBif</span>
+    </div>
+    <h1 class="main-title">TALENTO BANBIF</h1>
+    <p class="tagline">#TuProximoPasoEmpiezaAqui</p>
+  </header>
 
-        <div class="hero-content">
+  <!-- CONTENEDOR PRINCIPAL CON TARJETAS -->
+  <main class="container">
+    
+    <div class="cards-grid">
+      
+      <!-- TARJETA IZQUIERDA: FORMULARIO DE CAPTACIÓN -->
+      <div class="card card-primary" id="registro">
+        <h2>Únete a nuestra base de talento</h2>
+        <p class="card-subtitle">Déjanos tus datos para recibir información sobre prácticas y convocatorias.</p>
+        
+        <form name="registro-banbif" method="POST" data-netlify="true" class="form-banbif">
+          <input type="hidden" name="form-name" value="registro-banbif" />
+          
+          <div class="input-group">
+            <label for="nombres">Nombres y Apellidos *</label>
+            <input type="text" id="nombres" name="nombres" placeholder="Ej. Ana Pérez" required>
+          </div>
 
-            <div class="logo-container">
-                <div class="logo-placeholder">
-                    BANBIF
-                </div>
+          <div class="input-group">
+            <label for="universidad">Universidad *</label>
+            <input type="text" id="universidad" name="universidad" placeholder="Ej. Universidad del Pacífico" required>
+          </div>
+
+          <div class="input-group-row">
+            <div class="input-group">
+              <label for="carrera">Carrera *</label>
+              <input type="text" id="carrera" name="carrera" placeholder="Ej. Administración" required>
             </div>
+            <div class="input-group">
+              <label for="ciclo">Ciclo *</label>
+              <input type="text" id="ciclo" name="ciclo" placeholder="Ej. 7mo" required>
+            </div>
+          </div>
 
-            <p class="eyebrow">
-                OPORTUNIDADES PARA ESTUDIANTES
-            </p>
+          <div class="input-group-row">
+            <div class="input-group">
+              <label for="correo">Correo Electrónico *</label>
+              <input type="email" id="correo" name="correo" placeholder="correo@ejemplo.com" required>
+            </div>
+            <div class="input-group">
+              <label for="celular">Celular *</label>
+              <input type="tel" id="celular" name="celular" placeholder="987654321" required>
+            </div>
+          </div>
 
-            <h1>
-                Tu próximo paso<br>
-                <span>empieza aquí.</span>
-            </h1>
+          <div class="checkbox-group">
+            <input type="checkbox" id="politica" name="politica" required>
+            <label for="politica">Acepto el tratamiento de mis datos personales (Ley N° 29733).</label>
+          </div>
 
-            <p class="description">
-                Conoce BanBif, descubre nuestras oportunidades
-                y encuentra un espacio donde puedas desarrollar
-                todo tu potencial.
-            </p>
+          <button type="submit" class="btn-primary">
+            🚀 Registrarme
+          </button>
+        </form>
+      </div>
 
-            <button class="primary-button" onclick="goToAbout()">
-                CONÓCENOS
-                <span>→</span>
-            </button>
-
+      <!-- TARJETA DERECHA: INFORMACIÓN RÁPIDA -->
+      <div class="card card-secondary">
+        <div class="info-icon">❓</div>
+        <div class="info-content">
+          <h3>¡Conoce más de BanBif!</h3>
+          <p>Descubre nuestra cultura, beneficios y por qué somos uno de los mejores lugares para empezar tu carrera.</p>
+          <a href="#novedades" class="btn-link">Ver novedades ↓</a>
         </div>
+      </div>
 
-        <div class="decorative-circle circle-one"></div>
-        <div class="decorative-circle circle-two"></div>
+    </div>
 
-    </main>
+    <!-- BANNER DE NOVEDADES -->
+    <div class="section-banner" id="novedades">
+      <span>📢 CONVOCATORIAS ABIERTAS Y CONTENIDO</span>
+    </div>
 
-    <script src="script.js"></script>
+    <!-- SECCIÓN DE OFERTAS LABORALES -->
+    <h3 class="subsection-title">💼 Ofertas para Prácticas Preprofesionales</h3>
+    <div class="jobs-grid">
+      
+      <div class="job-card">
+        <span class="job-badge">Nueva</span>
+        <h4>Practicante Preprofesional de Riesgos</h4>
+        <p class="job-details">📍 San Isidro (Híbrido) | 🎓 7mo a 9no ciclo</p>
+        <p class="job-desc">Apoyo en el análisis de bases de datos, generación de reportes e indicadores clave del área.</p>
+        <a href="#registro" class="btn-job">Postular aquí</a>
+      </div>
+
+      <div class="job-card">
+        <span class="job-badge">Nueva</span>
+        <h4>Practicante Preprofesional de Marketing Digital</h4>
+        <p class="job-details">📍 Miraflores (Híbrido) | 🎓 6to a 8vo ciclo</p>
+        <p class="job-desc">Creación de contenido para canales digitales y seguimiento de métricas de campañas de captación.</p>
+        <a href="#registro" class="btn-job">Postular aquí</a>
+      </div>
+
+    </div>
+
+    <!-- SECCIÓN DE VIDEOS -->
+    <h3 class="subsection-title">🎬 Conoce la experiencia BanBif</h3>
+    <div class="video-grid">
+      
+      <div class="video-card">
+        <div class="video-responsive">
+          <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" title="Un día como practicante en BanBif" frameborder="0" allowfullscreen></iframe>
+        </div>
+        <h4>Un día como practicante en BanBif 🚀</h4>
+        <p>Acompaña a nuestros practicantes y descubre cómo es trabajar con nosotros.</p>
+      </div>
+
+    </div>
+
+  </main>
 
 </body>
 </html>
