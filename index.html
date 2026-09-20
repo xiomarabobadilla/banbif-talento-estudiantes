@@ -177,7 +177,7 @@
       background-color: #4338ca;
     }
 
-    /* TARJETA SECUNDARIA (DISEÑO MEJORADO) */
+    /* TARJETA SECUNDARIA (DOS FOTOS Y CONTENIDO) */
     .card-secondary {
       display: flex;
       flex-direction: column;
@@ -185,38 +185,50 @@
       text-align: center;
       background: #ffffff;
       border: 1px solid #e2e8f0;
-      gap: 18px;
+      gap: 16px;
     }
 
     .banbif-image-wrapper {
       width: 100%;
     }
 
+    /* ESTILO PARA LA FOTO SUPERIOR (COMPLETA / CONTAIN) */
+    .banbif-img-full {
+      width: 100%;
+      height: 180px;
+      object-fit: contain;
+      background-color: #f8fafc;
+      border-radius: 12px;
+      padding: 6px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+    }
+
+    /* ESTILO PARA LA FOTO INFERIOR (CUBRE / COVER) */
     .banbif-img-vertical {
       width: 100%;
-      height: 200px;
+      height: 160px;
       object-fit: cover;
       border-radius: 12px;
       box-shadow: 0 4px 10px rgba(0,0,0,0.08);
     }
 
     .info-content h3 {
-      font-size: 18px;
+      font-size: 17px;
       margin-bottom: 6px;
       color: #1e293b;
     }
 
     .info-content p {
-      font-size: 13px;
+      font-size: 12px;
       color: #64748b;
-      margin-bottom: 12px;
+      margin-bottom: 10px;
     }
 
     .btn-link {
       color: #4f46e5;
       text-decoration: none;
       font-weight: 600;
-      font-size: 14px;
+      font-size: 13px;
     }
 
     .btn-link:hover {
@@ -228,27 +240,26 @@
       width: 100%;
       background: linear-gradient(135deg, #f5f3ff, #ede9fe);
       border-left: 4px solid #7c3aed;
-      padding: 14px 16px;
+      padding: 10px 14px;
       border-radius: 0 8px 8px 0;
       text-align: left;
-      margin-top: 5px;
     }
 
     .purpose-title {
-      font-size: 11px;
+      font-size: 10px;
       font-weight: 700;
       color: #7c3aed;
       text-transform: uppercase;
       letter-spacing: 0.5px;
-      margin-bottom: 3px;
+      margin-bottom: 2px;
     }
 
     .purpose-text {
-      font-size: 13px;
+      font-size: 12px;
       font-style: italic;
       color: #4b5563;
       font-weight: 600;
-      line-height: 1.4;
+      line-height: 1.3;
     }
 
     /* SECCIONES Y BANTERS */
@@ -573,25 +584,30 @@
         </form>
       </div>
 
-      <!-- TARJETA DERECHA ACTUALIZADA -->
+      <!-- TARJETA DERECHA: AMBAS FOTOS + PROPÓSITO -->
       <div class="card card-secondary">
         
-        <!-- FOTO DEL EQUIPO -->
+        <!-- FOTO SUPERIOR DEL BANCO (COMPLETA) -->
         <div class="banbif-image-wrapper">
-          <img src="images/foto-03.jpg" alt="Equipo BanBif" class="banbif-img-vertical">
+          <img src="images/1521070256785.jpg" alt="Edificio BanBif" class="banbif-img-full">
         </div>
 
-        <!-- CONTENIDO DE TEXTO -->
+        <!-- TEXTO CENTRAL -->
         <div class="info-content">
           <h3>¡Conoce más de BanBif!</h3>
           <p>Descubre nuestra cultura, beneficios y por qué somos uno de los mejores lugares para empezar tu carrera.</p>
           <a href="https://www.banbif.com.pe/trabaja-con-nosotros" class="btn-link" target="_blank">Visítanos aquí →</a>
         </div>
 
-        <!-- CAJA DEL PROPÓSITO -->
+        <!-- CAJA DEL PROPÓSITO DEL BANCO -->
         <div class="purpose-box">
           <div class="purpose-title">Nuestro Propósito</div>
           <div class="purpose-text">“Acompañamos sueños, generamos desarrollo”</div>
+        </div>
+
+        <!-- FOTO INFERIOR DEL EQUIPO -->
+        <div class="banbif-image-wrapper">
+          <img src="images/foto-03.jpg" alt="Equipo BanBif" class="banbif-img-vertical">
         </div>
 
       </div>
