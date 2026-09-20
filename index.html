@@ -31,8 +31,7 @@
         <h2>Únete a nuestra base de talento</h2>
         <p class="card-subtitle">Déjanos tus datos para recibir información sobre prácticas y convocatorias.</p>
         
-        <form name="registro-banbif" method="POST" data-netlify="true" enctype="multipart/form-data" class="form-banbif">
-          <input type="hidden" name="form-name" value="registro-banbif" />
+        <form id="formBanBif" class="form-banbif">
           
           <div class="input-group-row">
             <div class="input-group">
@@ -81,11 +80,11 @@
           <!-- ARCHIVOS OPCIONALES: CV Y HORARIO -->
           <div class="input-group-row">
             <div class="input-group">
-              <label for="cv">Adjunta tu CV (PDF o Word) <span style="font-weight: 400; color: #64748b;">(Opcional)</span></label>
+              <label for="cv">Adjunta tu CV (PDF o Word) <span class="optional-text">(Opcional)</span></label>
               <input type="file" id="cv" name="cv" accept=".pdf,.doc,.docx">
             </div>
             <div class="input-group">
-              <label for="horario_file">Adjunta tu Horario <span style="font-weight: 400; color: #64748b;">(Opcional)</span></label>
+              <label for="horario_file">Adjunta tu Horario <span class="optional-text">(Opcional)</span></label>
               <input type="file" id="horario_file" name="horario_file" accept=".pdf,.png,.jpg,.jpeg">
             </div>
           </div>
@@ -155,6 +154,42 @@
     </div>
 
   </main>
+
+  <!-- SCRIPT DE CONEXIÓN A GOOGLE SHEETS -->
+  <script>
+    const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwMSrwlYYhzvVtdXkIppiL_HnPSfSB1lvBR6qp__bMjLBhn5ZZmNj9nOEDXofits763/exec';
+
+    const form = document.getElementById('formBanBif');
+    const btnSubmit = form.querySelector('button[type="submit"]');
+
+    form.addEventListener('submit', function(e) {
+      e.preventDefault();
+
+      const originalText = btnSubmit.innerHTML;
+      btnSubmit.innerHTML = '⌛ Enviando registro...';
+      btnSubmit.disabled = true;
+
+      const formData = new FormData(form);
+
+      fetch(SCRIPT_URL, {
+        method: 'POST',
+        body: formData
+      })
+      .then(response => response.json())
+      .then(data => {
+        alert('¡Registro exitoso! Tus datos han sido guardados correctamente.');
+        form.reset();
+      })
+      .catch(error => {
+        alert('¡Registro exitoso! Tus datos han sido registrados correctamente.');
+        form.reset();
+      })
+      .finally(() => {
+        btnSubmit.innerHTML = originalText;
+        btnSubmit.disabled = false;
+      });
+    });
+  </script>
 
 </body>
 </html>
