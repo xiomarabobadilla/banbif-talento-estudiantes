@@ -186,21 +186,20 @@
       background: #ffffff;
       border: 1px solid #e2e8f0;
       gap: 16px;
+      padding: 20px; /* Ajustado para aprovechar todo el ancho con las imágenes */
     }
 
     .banbif-image-wrapper {
       width: 100%;
     }
 
-    /* FOTO SUPERIOR: 100% vertical y completa sin recortes forzados */
+    /* FOTO SUPERIOR: Más grande, ocupando todo el ancho y sin espacios laterales */
     .banbif-img-full {
       width: 100%;
-      height: 280px;
-      object-fit: contain;
+      height: 380px;
+      object-fit: cover;
       border-radius: 12px;
-      background-color: #faf5ff; /* Fondo sutil para enmarcarla con elegancia */
-      padding: 8px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+      box-shadow: 0 4px 10px rgba(0,0,0,0.06);
       display: block;
     }
 
@@ -212,6 +211,10 @@
       border-radius: 12px;
       box-shadow: 0 4px 10px rgba(0,0,0,0.08);
       display: block;
+    }
+
+    .info-content {
+      padding: 0 10px;
     }
 
     .info-content h3 {
@@ -586,10 +589,10 @@
         </form>
       </div>
 
-      <!-- TARJETA DERECHA: FOTO VERTICAL ÍNTEGRA Y DISEÑO ARMÓNICO -->
+      <!-- TARJETA DERECHA: IMAGEN GRANDE Y COMPLETA SIN BORDES ROSADOS -->
       <div class="card card-secondary">
         
-        <!-- FOTO SUPERIOR DEL BANCO (Vertical y completa, sin cortes laterales) -->
+        <!-- FOTO SUPERIOR DEL BANCO (Vertical grande a todo ancho) -->
         <div class="banbif-image-wrapper">
           <img src="images/1521070256785.jpg" alt="Edificio BanBif" class="banbif-img-full">
         </div>
