@@ -44,7 +44,7 @@
             </div>
           </div>
 
-          <!-- UNIVERSIDAD CON OPCIÓN OTRA -->
+          <!-- UNIVERSIDAD CON OPCIÓN OTROS -->
           <div class="input-group">
             <label for="universidad">Universidad *</label>
             <select id="universidad" name="universidad" required onchange="checkOtraUni(this.value)" style="width: 100%; padding: 12px; border: 1px solid #ddd; border-radius: 8px; background: #fff; font-family: inherit; font-size: 14px;">
@@ -67,7 +67,7 @@
               <option value="UCV">Universidad César Vallejo (UCV)</option>
               <option value="UPN">Universidad Privada del Norte (UPN)</option>
               <option value="UNW">Universidad Norbert Wiener (UNW)</option>
-              <option value="Otra">Otra (Especificar)</option>
+              <option value="Otros">Otro / Especifique</option>
             </select>
           </div>
 
@@ -104,7 +104,7 @@
             </div>
           </div>
 
-          <!-- ÁREA DE INTERÉS CON OPCIÓN OTRA -->
+          <!-- ÁREA DE INTERÉS CON OPCIÓN OTROS -->
           <div class="input-group">
             <label for="areaInteres">Área de Interés en BanBif *</label>
             <select id="areaInteres" name="areaInteres" required onchange="checkOtraArea(this.value)" style="width: 100%; padding: 12px; border: 1px solid #ddd; border-radius: 8px; background: #fff; font-family: inherit; font-size: 14px;">
@@ -121,8 +121,7 @@
               <option value="Legal">Legal</option>
               <option value="Procesos">Procesos</option>
               <option value="Mercado de Capitales">Mercado de Capitales</option>
-              <option value="Otros">Otros</option>
-              <option value="Otra">Otra (Especificar)</option>
+              <option value="Otros">Otro / Especifique</option>
             </select>
           </div>
 
@@ -231,11 +230,11 @@
   <script>
     const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwMSrwlYYhzvVtdXkIppiL_HnPSfSB1lvBR6qp__bMjLBhn5ZZmNj9nOEDXofits763/exec';
 
-    // Funciones para mostrar los inputs de texto si el usuario elige "Otra"
+    // Ahora detecta perfectamente tanto "Otros", "Otro" u "Otra"
     function checkOtraUni(valor) {
       const contenedor = document.getElementById('otraUniContainer');
       const inputTexto = document.getElementById('otraUniversidad');
-      if (valor === 'Otra') {
+      if (valor === 'Otros' || valor === 'Otro' || valor === 'Otra') {
         contenedor.classList.remove('hidden');
         inputTexto.setAttribute('required', 'true');
       } else {
@@ -248,7 +247,7 @@
     function checkOtraArea(valor) {
       const contenedor = document.getElementById('otraAreaContainer');
       const inputTexto = document.getElementById('otraArea');
-      if (valor === 'Otra') {
+      if (valor === 'Otros' || valor === 'Otro' || valor === 'Otra') {
         contenedor.classList.remove('hidden');
         inputTexto.setAttribute('required', 'true');
       } else {
@@ -264,15 +263,13 @@
     form.addEventListener('submit', function(e) {
       e.preventDefault();
 
-      // Si seleccionó "Otra" universidad, reemplazamos el valor que se envía a Google Sheets con lo que escribió
       let selectUni = document.getElementById('universidad');
-      if (selectUni.value === 'Otra') {
+      if (selectUni.value === 'Otros' || selectUni.value === 'Otro' || selectUni.value === 'Otra') {
         selectUni.value = document.getElementById('otraUniversidad').value;
       }
 
-      // Si seleccionó "Otra" área, hacemos lo mismo
       let selectArea = document.getElementById('areaInteres');
-      if (selectArea.value === 'Otra') {
+      if (selectArea.value === 'Otros' || selectArea.value === 'Otro' || selectArea.value === 'Otra') {
         selectArea.value = document.getElementById('otraArea').value;
       }
 
@@ -306,7 +303,7 @@
     });
   </script>
 
-  <!-- Estilo rápido por si tu archivo style.css no tiene la clase .hidden -->
+  <!-- Estilo rápido para ocultar elementos -->
   <style>
     .hidden { display: none !important; }
   </style>
