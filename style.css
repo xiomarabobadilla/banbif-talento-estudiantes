@@ -1,4 +1,4 @@
-* {
+¡Qué excelente paleta de colores! Con esos códigos HEX exactos de BanBif (#2393FF para el azul brillante, #8B52FA para el violeta/púrpura y #B2D812 para el verde lima de acento), la página va a quedar 100% fiel a la marca oficial del banco.   Solo necesitas actualizar tu archivo style.css en GitHub para aplicar el gradiente diagonal exacto y cambiar todos los botones y acentos al verde lima oficial.PASO ÚNICO: Reemplazar el código en style.cssEntra a GitHub y abre el archivo style.css dentro de tu repositorio banbif-talento-estudiantes.Haz clic en el icono del lápiz (✏️ Edit this file).Borra todo lo que tiene actualmente y pega este código ajustado con la paleta de colores oficial:CSS* {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
@@ -6,43 +6,56 @@
 }
 
 body {
-  background-color: #f3f4f6;
-  color: #333;
+  background-color: #f8fafc;
+  color: #1e293b;
 }
 
-/* HEADER AZUL CON GRADIENTE */
+/* HEADER CON EL GRADIENTE DIAGONAL OFICIAL DE BANBIF */
 .hero-header {
-  background: linear-gradient(135deg, #0052cc 0%, #4c1d95 100%);
-  color: white;
+  background: linear-gradient(135deg, #2393FF 0%, #8B52FA 100%);
+  color: #ffffff;
   text-align: center;
-  padding: 40px 20px 80px 20px;
+  padding: 45px 20px 85px 20px;
 }
 
 .logo-box {
-  background: white;
+  background: #ffffff;
   display: inline-block;
   padding: 8px 24px;
-  border-radius: 8px;
+  border-radius: 12px;
   margin-bottom: 20px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
 .logo-text {
-  color: #0052cc;
+  color: #2393FF;
   font-weight: 800;
-  font-size: 1.4rem;
-  letter-spacing: 1px;
+  font-size: 1.5rem;
+  letter-spacing: 0.5px;
+  position: relative;
+}
+
+/* PUNTO LIMA/VERDE SOBRE LA 'i' EN EL LOGO */
+.logo-text::after {
+  content: "°";
+  color: #B2D812;
+  font-size: 1.8rem;
+  position: absolute;
+  top: -6px;
+  right: 12px;
 }
 
 .main-title {
-  font-size: 2.2rem;
+  font-size: 2.3rem;
   font-weight: 800;
   letter-spacing: 1px;
 }
 
 .tagline {
   font-size: 0.95rem;
-  opacity: 0.9;
+  opacity: 0.95;
   margin-top: 5px;
+  font-weight: 600;
 }
 
 /* CONTENEDOR PRINCIPAL */
@@ -65,10 +78,10 @@ body {
 }
 
 .card {
-  background: white;
+  background: #ffffff;
   border-radius: 16px;
   padding: 28px;
-  box-shadow: 0 10px 25px rgba(0,0,0,0.06);
+  box-shadow: 0 10px 25px rgba(139, 82, 250, 0.08);
 }
 
 .card-primary h2 {
@@ -123,8 +136,9 @@ body {
 }
 
 .form-banbif input:focus {
-  border-color: #0052cc;
-  background-color: #fff;
+  border-color: #2393FF;
+  background-color: #ffffff;
+  box-shadow: 0 0 0 3px rgba(35, 147, 255, 0.15);
 }
 
 .checkbox-group {
@@ -139,34 +153,38 @@ body {
   color: #64748b;
 }
 
+/* BOTÓN PRINCIPAL EN VERDE LIMA OFICIAL CON TEXTO OSCURO/BLANCO */
 .btn-primary {
   width: 100%;
-  background: #f59e0b;
-  color: white;
+  background: #B2D812;
+  color: #0f172a;
   border: none;
-  padding: 12px;
+  padding: 13px;
   border-radius: 10px;
-  font-weight: 700;
+  font-weight: 800;
   font-size: 1rem;
   cursor: pointer;
-  transition: background 0.2s;
+  transition: all 0.2s;
+  box-shadow: 0 4px 12px rgba(178, 216, 18, 0.3);
 }
 
 .btn-primary:hover {
-  background: #d97706;
+  background: #a1c40f;
+  transform: translateY(-1px);
 }
 
-/* TARJETA SECUNDARIA */
+/* TARJETA SECUNDARIA (CONÓCENOS) */
 .card-secondary {
   display: flex;
   gap: 15px;
   align-items: flex-start;
   height: fit-content;
+  border-left: 4px solid #8B52FA;
 }
 
 .info-icon {
-  background: #e0e7ff;
-  color: #4338ca;
+  background: rgba(139, 82, 250, 0.12);
+  color: #8B52FA;
   width: 40px;
   height: 40px;
   border-radius: 50%;
@@ -190,31 +208,32 @@ body {
 
 .btn-link {
   font-size: 0.85rem;
-  color: #0052cc;
+  color: #2393FF;
   font-weight: 700;
   text-decoration: none;
 }
 
-/* BANNER DE NOVEDADES */
+/* BANNER DE NOVEDADES EN PÚRPURA DE LA PALETA */
 .section-banner {
-  background: #f59e0b;
-  color: white;
+  background: linear-gradient(90deg, #8B52FA 0%, #2393FF 100%);
+  color: #ffffff;
   font-weight: 700;
   font-size: 0.85rem;
-  padding: 10px 16px;
-  border-radius: 8px;
-  margin: 30px 0 20px 0;
+  padding: 12px 18px;
+  border-radius: 10px;
+  margin: 35px 0 20px 0;
   letter-spacing: 0.5px;
+  box-shadow: 0 4px 12px rgba(139, 82, 250, 0.15);
 }
 
 .subsection-title {
   font-size: 1.1rem;
-  color: #1e293b;
+  color: #0f172a;
   margin: 25px 0 15px 0;
   font-weight: 700;
 }
 
-/* CARDS DE OFERTAS */
+/* CARDS DE OFERTAS LABORALES */
 .jobs-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -223,29 +242,30 @@ body {
 }
 
 .job-card {
-  background: white;
+  background: #ffffff;
   border: 1px solid #e2e8f0;
   border-radius: 12px;
   padding: 20px;
   position: relative;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.03);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
   transition: transform 0.2s, box-shadow 0.2s;
 }
 
 .job-card:hover {
   transform: translateY(-3px);
-  box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+  box-shadow: 0 8px 20px rgba(35, 147, 255, 0.12);
+  border-color: #2393FF;
 }
 
 .job-badge {
   position: absolute;
   top: 15px;
   right: 15px;
-  background: #dcfce7;
-  color: #15803d;
+  background: rgba(178, 216, 18, 0.25);
+  color: #4d5e03;
   font-size: 0.7rem;
-  font-weight: 700;
-  padding: 3px 8px;
+  font-weight: 800;
+  padding: 3px 10px;
   border-radius: 20px;
 }
 
@@ -272,18 +292,18 @@ body {
 
 .btn-job {
   display: inline-block;
-  background: #0052cc;
-  color: white;
+  background: #2393FF;
+  color: #ffffff;
   text-decoration: none;
   font-size: 0.8rem;
   font-weight: 700;
-  padding: 8px 16px;
-  border-radius: 6px;
+  padding: 8px 18px;
+  border-radius: 8px;
   transition: background 0.2s;
 }
 
 .btn-job:hover {
-  background: #003d99;
+  background: #1a74cc;
 }
 
 /* SECCIÓN DE VIDEOS */
@@ -295,10 +315,10 @@ body {
 }
 
 .video-card {
-  background: white;
+  background: #ffffff;
   border-radius: 12px;
   padding: 15px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.04);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
 }
 
 .video-responsive {
