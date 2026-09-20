@@ -44,9 +44,37 @@
             </div>
           </div>
 
+          <!-- UNIVERSIDAD CON OPCIÓN OTRA -->
           <div class="input-group">
             <label for="universidad">Universidad *</label>
-            <input type="text" id="universidad" name="universidad" placeholder="Ej. Universidad del Pacífico" required>
+            <select id="universidad" name="universidad" required onchange="checkOtraUni(this.value)" style="width: 100%; padding: 12px; border: 1px solid #ddd; border-radius: 8px; background: #fff; font-family: inherit; font-size: 14px;">
+              <option value="">Selecciona Universidad...</option>
+              <option value="PUCP">Pontificia Universidad Católica del Perú (PUCP)</option>
+              <option value="UP">Universidad del Pacífico (UP)</option>
+              <option value="Universidad de Lima (UL)">Universidad de Lima (UL)</option>
+              <option value="UPC">Universidad Peruana de Ciencias Aplicadas (UPC)</option>
+              <option value="UNMSM">Universidad Nacional Mayor de San Marcos (UNMSM)</option>
+              <option value="UNI">Universidad Nacional de Ingeniería (UNI)</option>
+              <option value="UPCH">Universidad Peruana Cayetano Heredia (UPCH)</option>
+              <option value="USIL">Universidad San Ignacio de Loyola (USIL)</option>
+              <option value="UDEP">Universidad de Piura (UDEP)</option>
+              <option value="URP">Universidad Ricardo Palma (URP)</option>
+              <option value="Universidad ESAN">Universidad ESAN</option>
+              <option value="UNALM">Universidad Nacional Agraria La Molina (UNALM)</option>
+              <option value="UNFV">Universidad Nacional Federico Villarreal (UNFV)</option>
+              <option value="UTP">Universidad Tecnológica del Perú (UTP)</option>
+              <option value="UCSUR">Universidad Científica del Sur (UCSUR)</option>
+              <option value="UCV">Universidad César Vallejo (UCV)</option>
+              <option value="UPN">Universidad Privada del Norte (UPN)</option>
+              <option value="UNW">Universidad Norbert Wiener (UNW)</option>
+              <option value="Otra">Otra (Especificar)</option>
+            </select>
+          </div>
+
+          <!-- CAMPO OCULTO PARA OTRA UNIVERSIDAD -->
+          <div class="input-group hidden" id="otraUniContainer">
+            <label for="otraUniversidad">Especifique su Universidad *</label>
+            <input type="text" id="otraUniversidad" name="otraUniversidad" placeholder="Ej. Universidad Nacional de Trujillo">
           </div>
 
           <div class="input-group-row">
@@ -54,16 +82,32 @@
               <label for="carrera">Carrera *</label>
               <input type="text" id="carrera" name="carrera" placeholder="Ej. Administración" required>
             </div>
+            
+            <!-- CICLO (LISTA DESPLEGABLE) -->
             <div class="input-group">
               <label for="ciclo">Ciclo *</label>
-              <input type="text" id="ciclo" name="ciclo" placeholder="Ej. 7mo" required>
+              <select id="ciclo" name="ciclo" required style="width: 100%; padding: 12px; border: 1px solid #ddd; border-radius: 8px; background: #fff; font-family: inherit; font-size: 14px;">
+                <option value="">Selecciona Ciclo...</option>
+                <option value="1er Ciclo">1er Ciclo</option>
+                <option value="2do Ciclo">2do Ciclo</option>
+                <option value="3er Ciclo">3er Ciclo</option>
+                <option value="4to Ciclo">4to Ciclo</option>
+                <option value="5to Ciclo">5to Ciclo</option>
+                <option value="6to Ciclo">6to Ciclo</option>
+                <option value="7mo Ciclo">7mo Ciclo</option>
+                <option value="8vo Ciclo">8vo Ciclo</option>
+                <option value="9no Ciclo">9no Ciclo</option>
+                <option value="10mo Ciclo">10mo Ciclo</option>
+                <option value="11avo Ciclo">11avo Ciclo</option>
+                <option value="12avo Ciclo">12avo Ciclo</option>
+              </select>
             </div>
           </div>
 
-          <!-- ÁREA DE INTERÉS EN BANBIF -->
+          <!-- ÁREA DE INTERÉS CON OPCIÓN OTRA -->
           <div class="input-group">
             <label for="areaInteres">Área de Interés en BanBif *</label>
-            <select id="areaInteres" name="areaInteres" required style="width: 100%; padding: 12px; border: 1px solid #ddd; border-radius: 8px; background: #fff; font-family: inherit; font-size: 14px;">
+            <select id="areaInteres" name="areaInteres" required onchange="checkOtraArea(this.value)" style="width: 100%; padding: 12px; border: 1px solid #ddd; border-radius: 8px; background: #fff; font-family: inherit; font-size: 14px;">
               <option value="">Selecciona Área de Interés...</option>
               <option value="Inversiones">Inversiones</option>
               <option value="Producto">Producto</option>
@@ -78,7 +122,14 @@
               <option value="Procesos">Procesos</option>
               <option value="Mercado de Capitales">Mercado de Capitales</option>
               <option value="Otros">Otros</option>
+              <option value="Otra">Otra (Especificar)</option>
             </select>
+          </div>
+
+          <!-- CAMPO OCULTO PARA OTRA ÁREA -->
+          <div class="input-group hidden" id="otraAreaContainer">
+            <label for="otraArea">Especifique su Área de Interés *</label>
+            <input type="text" id="otraArea" name="otraArea" placeholder="Ej. Auditoría Interna">
           </div>
 
           <div class="input-group-row">
@@ -176,15 +227,54 @@
 
   </main>
 
-  <!-- SCRIPT DE CONEXIÓN A GOOGLE SHEETS -->
+  <!-- SCRIPT DE CONEXIÓN Y DINÁMICA DE CAMPOS -->
   <script>
     const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwMSrwlYYhzvVtdXkIppiL_HnPSfSB1lvBR6qp__bMjLBhn5ZZmNj9nOEDXofits763/exec';
+
+    // Funciones para mostrar los inputs de texto si el usuario elige "Otra"
+    function checkOtraUni(valor) {
+      const contenedor = document.getElementById('otraUniContainer');
+      const inputTexto = document.getElementById('otraUniversidad');
+      if (valor === 'Otra') {
+        contenedor.classList.remove('hidden');
+        inputTexto.setAttribute('required', 'true');
+      } else {
+        contenedor.classList.add('hidden');
+        inputTexto.removeAttribute('required');
+        inputTexto.value = '';
+      }
+    }
+
+    function checkOtraArea(valor) {
+      const contenedor = document.getElementById('otraAreaContainer');
+      const inputTexto = document.getElementById('otraArea');
+      if (valor === 'Otra') {
+        contenedor.classList.remove('hidden');
+        inputTexto.setAttribute('required', 'true');
+      } else {
+        contenedor.classList.add('hidden');
+        inputTexto.removeAttribute('required');
+        inputTexto.value = '';
+      }
+    }
 
     const form = document.getElementById('formBanBif');
     const btnSubmit = form.querySelector('button[type="submit"]');
 
     form.addEventListener('submit', function(e) {
       e.preventDefault();
+
+      // Si seleccionó "Otra" universidad, reemplazamos el valor que se envía a Google Sheets con lo que escribió
+      let selectUni = document.getElementById('universidad');
+      if (selectUni.value === 'Otra') {
+        selectUni.value = document.getElementById('otraUniversidad').value;
+      }
+
+      // Si seleccionó "Otra" área, hacemos lo mismo
+      let selectArea = document.getElementById('areaInteres');
+      if (selectArea.value === 'Otra') {
+        selectArea.value = document.getElementById('otraArea').value;
+      }
 
       const originalText = btnSubmit.innerHTML;
       btnSubmit.innerHTML = '⌛ Enviando registro...';
@@ -200,10 +290,14 @@
       .then(data => {
         alert('¡Registro exitoso! Tus datos han sido guardados correctamente.');
         form.reset();
+        document.getElementById('otraUniContainer').classList.add('hidden');
+        document.getElementById('otraAreaContainer').classList.add('hidden');
       })
       .catch(error => {
         alert('¡Registro exitoso! Tus datos han sido registrados correctamente.');
         form.reset();
+        document.getElementById('otraUniContainer').classList.add('hidden');
+        document.getElementById('otraAreaContainer').classList.add('hidden');
       })
       .finally(() => {
         btnSubmit.innerHTML = originalText;
@@ -211,6 +305,11 @@
       });
     });
   </script>
+
+  <!-- Estilo rápido por si tu archivo style.css no tiene la clase .hidden -->
+  <style>
+    .hidden { display: none !important; }
+  </style>
 
 </body>
 </html>
