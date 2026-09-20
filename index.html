@@ -185,33 +185,29 @@
       text-align: center;
       background: #ffffff;
       border: 1px solid #e2e8f0;
-      gap: 18px;
+      gap: 16px;
     }
 
     .banbif-image-wrapper {
       width: 100%;
-      overflow: hidden;
-      border-radius: 12px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.06);
     }
 
-    /* FOTO SUPERIOR: Optimizada a cover con una altura proporcionada para eliminar espacios vacíos */
+    /* FOTO SUPERIOR: 100% vertical y completa sin recortes forzados */
     .banbif-img-full {
       width: 100%;
-      height: 140px;
-      object-fit: cover;
+      height: 280px;
+      object-fit: contain;
+      border-radius: 12px;
+      background-color: #faf5ff; /* Fondo sutil para enmarcarla con elegancia */
+      padding: 8px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.05);
       display: block;
-      transition: transform 0.3s ease;
-    }
-
-    .banbif-img-full:hover {
-      transform: scale(1.03);
     }
 
     /* FOTO INFERIOR DEL EQUIPO */
     .banbif-img-vertical {
       width: 100%;
-      height: 150px;
+      height: 170px;
       object-fit: cover;
       border-radius: 12px;
       box-shadow: 0 4px 10px rgba(0,0,0,0.08);
@@ -227,7 +223,7 @@
     .info-content p {
       font-size: 12px;
       color: #64748b;
-      margin-bottom: 8px;
+      margin-bottom: 6px;
     }
 
     .btn-link {
@@ -241,15 +237,15 @@
       text-decoration: underline;
     }
 
-    /* CAJA DE PROPÓSITO AMPLIADA Y CON MÁS PRESENCIA */
+    /* CAJA DE PROPÓSITO INTEGRADA */
     .purpose-box {
       width: 100%;
       background: linear-gradient(135deg, #7c3aed, #4f46e5);
       color: #fff;
-      padding: 16px 18px;
+      padding: 14px 16px;
       border-radius: 10px;
       text-align: center;
-      box-shadow: 0 4px 12px rgba(124, 58, 237, 0.25);
+      box-shadow: 0 4px 12px rgba(124, 58, 237, 0.2);
     }
 
     .purpose-title {
@@ -258,11 +254,11 @@
       letter-spacing: 1px;
       text-transform: uppercase;
       opacity: 0.85;
-      margin-bottom: 6px;
+      margin-bottom: 4px;
     }
 
     .purpose-text {
-      font-size: 14px;
+      font-size: 13px;
       font-style: italic;
       font-weight: 600;
       line-height: 1.4;
@@ -590,10 +586,10 @@
         </form>
       </div>
 
-      <!-- TARJETA DERECHA: DISEÑO EQUILIBRADO Y ESTÉTICO -->
+      <!-- TARJETA DERECHA: FOTO VERTICAL ÍNTEGRA Y DISEÑO ARMÓNICO -->
       <div class="card card-secondary">
         
-        <!-- FOTO SUPERIOR DEL BANCO (Diseño limpio sin espacios vacíos extraños) -->
+        <!-- FOTO SUPERIOR DEL BANCO (Vertical y completa, sin cortes laterales) -->
         <div class="banbif-image-wrapper">
           <img src="images/1521070256785.jpg" alt="Edificio BanBif" class="banbif-img-full">
         </div>
@@ -605,7 +601,7 @@
           <a href="https://www.banbif.com.pe/trabaja-con-nosotros" class="btn-link" target="_blank">Visítanos aquí →</a>
         </div>
 
-        <!-- CAJA DE PROPÓSITO REDISEÑADA (Más grande y vistosa) -->
+        <!-- CAJA DE PROPÓSITO -->
         <div class="purpose-box">
           <div class="purpose-title">Nuestro Propósito</div>
           <div class="purpose-text">“Acompañamos sueños, generamos desarrollo”</div>
