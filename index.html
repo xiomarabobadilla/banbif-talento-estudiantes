@@ -78,9 +78,27 @@
           </div>
 
           <div class="input-group-row">
+            <!-- CARRERA CON OPCIÓN OTROS -->
             <div class="input-group">
               <label for="carrera">Carrera *</label>
-              <input type="text" id="carrera" name="carrera" placeholder="Ej. Administración" required>
+              <select id="carrera" name="carrera" required onchange="checkOtraCarrera(this.value)" style="width: 100%; padding: 12px; border: 1px solid #ddd; border-radius: 8px; background: #fff; font-family: inherit; font-size: 14px;">
+                <option value="">Selecciona Carrera...</option>
+                <option value="Administración">Administración</option>
+                <option value="Comunicaciones">Comunicaciones</option>
+                <option value="Contabilidad">Contabilidad</option>
+                <option value="Economía">Economía</option>
+                <option value="Estadística">Estadística</option>
+                <option value="Finanzas">Finanzas</option>
+                <option value="Gestión y alta dirección">Gestión y alta dirección</option>
+                <option value="Ingeniería Industrial">Ingeniería Industrial</option>
+                <option value="Ingeniería de Sistemas">Ingeniería de Sistemas</option>
+                <option value="Ingeniería de Software">Ingeniería de Software</option>
+                <option value="Ingeniería de Gestión Empresarial">Ingeniería de Gestión Empresarial</option>
+                <option value="Marketing">Marketing</option>
+                <option value="Negocios Internacionales">Negocios Internacionales</option>
+                <option value="Psicología">Psicología</option>
+                <option value="Otros">Otro / Especifique</option>
+              </select>
             </div>
             
             <!-- CICLO (LISTA DESPLEGABLE) -->
@@ -102,6 +120,12 @@
                 <option value="12avo Ciclo">12avo Ciclo</option>
               </select>
             </div>
+          </div>
+
+          <!-- CAMPO OCULTO PARA OTRA CARRERA -->
+          <div class="input-group hidden" id="otraCarreraContainer">
+            <label for="otraCarrera">Especifique su Carrera *</label>
+            <input type="text" id="otraCarrera" name="otraCarrera" placeholder="Ej. Biología">
           </div>
 
           <!-- ÁREA DE INTERÉS CON OPCIÓN OTROS -->
@@ -230,10 +254,23 @@
   <script>
     const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwMSrwlYYhzvVtdXkIppiL_HnPSfSB1lvBR6qp__bMjLBhn5ZZmNj9nOEDXofits763/exec';
 
-    // Ahora detecta perfectamente tanto "Otros", "Otro" u "Otra"
+    // Funciones para mostrar los inputs de texto si el usuario elige "Otros"
     function checkOtraUni(valor) {
       const contenedor = document.getElementById('otraUniContainer');
       const inputTexto = document.getElementById('otraUniversidad');
+      if (valor === 'Otros' || valor === 'Otro' || valor === 'Otra') {
+        contenedor.classList.remove('hidden');
+        inputTexto.setAttribute('required', 'true');
+      } else {
+        contenedor.classList.add('hidden');
+        inputTexto.removeAttribute('required');
+        inputTexto.value = '';
+      }
+    }
+
+    function checkOtraCarrera(valor) {
+      const contenedor = document.getElementById('otraCarreraContainer');
+      const inputTexto = document.getElementById('otraCarrera');
       if (valor === 'Otros' || valor === 'Otro' || valor === 'Otra') {
         contenedor.classList.remove('hidden');
         inputTexto.setAttribute('required', 'true');
@@ -263,9 +300,15 @@
     form.addEventListener('submit', function(e) {
       e.preventDefault();
 
+      // Si eligieron "Otros", reemplazamos el valor del select con el texto escrito
       let selectUni = document.getElementById('universidad');
       if (selectUni.value === 'Otros' || selectUni.value === 'Otro' || selectUni.value === 'Otra') {
         selectUni.value = document.getElementById('otraUniversidad').value;
+      }
+
+      let selectCarrera = document.getElementById('carrera');
+      if (selectCarrera.value === 'Otros' || selectCarrera.value === 'Otro' || selectCarrera.value === 'Otra') {
+        selectCarrera.value = document.getElementById('otraCarrera').value;
       }
 
       let selectArea = document.getElementById('areaInteres');
@@ -288,12 +331,14 @@
         alert('¡Registro exitoso! Tus datos han sido guardados correctamente.');
         form.reset();
         document.getElementById('otraUniContainer').classList.add('hidden');
+        document.getElementById('otraCarreraContainer').classList.add('hidden');
         document.getElementById('otraAreaContainer').classList.add('hidden');
       })
       .catch(error => {
         alert('¡Registro exitoso! Tus datos han sido registrados correctamente.');
         form.reset();
         document.getElementById('otraUniContainer').classList.add('hidden');
+        document.getElementById('otraCarreraContainer').classList.add('hidden');
         document.getElementById('otraAreaContainer').classList.add('hidden');
       })
       .finally(() => {
