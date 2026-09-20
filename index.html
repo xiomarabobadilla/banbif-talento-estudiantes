@@ -31,9 +31,12 @@
         <h2>Únete a nuestra base de talento</h2>
         <p class="card-subtitle">Déjanos tus datos para recibir información sobre prácticas y convocatorias.</p>
         
-        <!-- AGREGADO: name="postulaciones", data-netlify="true" y enctype para que Netlify guarde los archivos -->
+        <!-- FORMULARIO CON CONFIGURACIÓN DE NETLIFY -->
         <form id="formBanBif" class="form-banbif" name="postulaciones" method="POST" data-netlify="true" enctype="multipart/form-data">
           
+          <!-- CAMPO OCULTO NECESARIO PARA NETLIFY CUANDO SE USA FETCH/JS -->
+          <input type="hidden" name="form-name" value="postulaciones" />
+
           <div class="input-group-row">
             <div class="input-group">
               <label for="nombres">Nombres y Apellidos *</label>
