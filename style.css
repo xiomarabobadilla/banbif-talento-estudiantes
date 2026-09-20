@@ -13,7 +13,6 @@ body {
 /* HEADER CON COLLAGE DE FONDO Y GRADIENTE OFICIAL */
 .hero-header {
   position: relative;
-  /* Imagen de fondo del collage (reemplaza el enlace por la ruta de tu foto si la subes a GitHub) */
   background-image: url('https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=1200&q=80');
   background-size: cover;
   background-position: center;
@@ -23,7 +22,6 @@ body {
   overflow: hidden;
 }
 
-/* CAPA GRADIENTE MEZCLADA EN DIAGONAL (AZUL A VIOLETA) */
 .hero-overlay {
   position: absolute;
   top: 0;
@@ -147,7 +145,8 @@ body {
 
 .form-banbif input[type="text"],
 .form-banbif input[type="email"],
-.form-banbif input[type="tel"] {
+.form-banbif input[type="tel"],
+.form-banbif textarea {
   width: 100%;
   padding: 10px 14px;
   border: 1.5px solid #e2e8f0;
@@ -158,7 +157,14 @@ body {
   transition: all 0.2s;
 }
 
-.form-banbif input:focus {
+.form-banbif input[type="file"] {
+  font-size: 0.8rem;
+  color: #475569;
+  padding: 6px 0;
+}
+
+.form-banbif input:focus,
+.form-banbif textarea:focus {
   border-color: #2393FF;
   background-color: #ffffff;
   box-shadow: 0 0 0 3px rgba(35, 147, 255, 0.15);
