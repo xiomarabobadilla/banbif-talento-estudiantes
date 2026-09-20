@@ -177,19 +177,32 @@
       background-color: #4338ca;
     }
 
-    /* TARJETA SECUNDARIA */
+    /* TARJETA SECUNDARIA (DISEÑO VERTICAL CON FOTOS) */
     .card-secondary {
       display: flex;
       flex-direction: column;
-      justify-content: center;
-      align-items: flex-start;
-      background: linear-gradient(135deg, #f8fafc, #edf2f7);
+      align-items: center;
+      text-align: center;
+      background: #ffffff;
       border: 1px solid #e2e8f0;
+      gap: 20px;
+    }
+
+    .banbif-image-wrapper {
+      width: 100%;
+    }
+
+    .banbif-img-vertical {
+      width: 100%;
+      height: 160px;
+      object-fit: cover;
+      border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
     }
 
     .info-icon {
-      font-size: 32px;
-      margin-bottom: 15px;
+      font-size: 28px;
+      margin-bottom: 5px;
     }
 
     .info-content h3 {
@@ -201,7 +214,7 @@
     .info-content p {
       font-size: 13px;
       color: #64748b;
-      margin-bottom: 20px;
+      margin-bottom: 15px;
     }
 
     .btn-link {
@@ -289,21 +302,6 @@
       display: flex;
       gap: 10px;
       flex-wrap: wrap;
-    }
-
-    .btn-job {
-      background-color: #eff6ff;
-      color: #2563eb;
-      padding: 8px 14px;
-      border-radius: 6px;
-      text-decoration: none;
-      font-size: 13px;
-      font-weight: 600;
-      transition: background 0.2s;
-    }
-
-    .btn-job:hover {
-      background-color: #dbeafe;
     }
 
     .btn-linkedin {
@@ -552,13 +550,24 @@
         </form>
       </div>
 
-      <!-- TARJETA DERECHA: INFORMACIÓN RÁPIDA -->
+      <!-- TARJETA DERECHA: INFORMACIÓN RÁPIDA CON TUS DOS FOTOS VERTICALES -->
       <div class="card card-secondary">
-        <div class="info-icon">❓</div>
+        <!-- FOTO SUPERIOR -->
+        <div class="banbif-image-wrapper">
+          <img src="images/1521070256785.jpg" alt="Equipo BanBif" class="banbif-img-vertical">
+        </div>
+
+        <!-- TEXTO EN EL MEDIO -->
+        <div class="info-icon">🌟</div>
         <div class="info-content">
           <h3>¡Conoce más de BanBif!</h3>
           <p>Descubre nuestra cultura, beneficios y por qué somos uno de los mejores lugares para empezar tu carrera.</p>
           <a href="https://www.banbif.com.pe/trabaja-con-nosotros" class="btn-link" target="_blank">Visítanos aquí →</a>
+        </div>
+
+        <!-- FOTO INFERIOR -->
+        <div class="banbif-image-wrapper">
+          <img src="images/foto-03.jpg" alt="Distintivo BanBif" class="banbif-img-vertical">
         </div>
       </div>
 
@@ -569,11 +578,10 @@
       📢 CONVOCATORIAS ABIERTAS Y CONTENIDO RECIENTE
     </div>
 
-<!-- SECCIÓN DE OFERTAS LABORALES -->
+    <!-- SECCIÓN DE OFERTAS LABORALES -->
     <h3 class="subsection-title">💼 Ofertas para Prácticas Preprofesionales</h3>
     <div class="jobs-grid">
       
-      <!-- VACANTE REAL: FINANCIAMIENTOS ESTRUCTURADOS -->
       <div class="job-card">
         <span class="job-badge">Activa</span>
         <h4>Practicante Pre Profesional de Financiamientos Estructurados</h4>
@@ -595,7 +603,6 @@
     <h3 class="subsection-title">🏆 Orgullo BanBif en LinkedIn</h3>
     <div class="jobs-grid">
 
-      <!-- PUBLICACIÓN 1: TOP 13 BIE -->
       <div class="linkedin-post-card">
         <div class="linkedin-header">
           <div class="linkedin-logo-badge">in</div>
@@ -614,7 +621,6 @@
         </div>
       </div>
 
-      <!-- PUBLICACIÓN 2: OLIMPIADAS BANBIF (NUEVA) -->
       <div class="linkedin-post-card">
         <div class="linkedin-header">
           <div class="linkedin-logo-badge">in</div>
