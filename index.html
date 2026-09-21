@@ -3,786 +3,380 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>BanBif | Oportunidades para Estudiantes</title>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <title>BanBif | Base de Datos en Vivo</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
   <style>
-    /* Estilos generales y reseteo */
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
+    * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Poppins', sans-serif; }
+    body { background-color: #f4f6f9; color: #333; }
 
-    body {
-      font-family: 'Poppins', sans-serif;
-      background-color: #f4f6f9;
-      color: #333;
-      line-height: 1.6;
-    }
-
-    /* HEADER */
-    .hero-header {
+    /* HEADER SUPERIOR */
+    .top-bar {
       background: linear-gradient(135deg, #7c3aed, #4f46e5);
       color: #fff;
-      padding: 60px 20px;
-      text-align: center;
-      position: relative;
-    }
-
-    .hero-content {
-      position: relative;
-      z-index: 2;
-    }
-
-    .logo-box {
-      font-size: 28px;
-      font-weight: 800;
-      letter-spacing: 1px;
-      margin-bottom: 10px;
-    }
-
-    .main-title {
-      font-size: 36px;
-      font-weight: 800;
-      margin-bottom: 5px;
-    }
-
-    .tagline {
-      font-size: 16px;
-      opacity: 0.9;
-    }
-
-    /* CONTENEDOR PRINCIPAL */
-    .container {
-      max-width: 1100px;
-      margin: -40px auto 40px auto;
-      padding: 0 20px;
-      position: relative;
-      z-index: 3;
-    }
-
-    /* GRID PRINCIPAL DE TARJETAS (FORMULARIO Y INFO) */
-    .cards-grid {
-      display: grid;
-      grid-template-columns: 2fr 1fr;
-      gap: 30px;
-      margin-bottom: 40px;
-    }
-
-    @media (max-width: 768px) {
-      .cards-grid {
-        grid-template-columns: 1fr;
-      }
-    }
-
-    .card {
-      background: #fff;
-      border-radius: 16px;
-      padding: 30px;
-      box-shadow: 0 10px 25px rgba(0,0,0,0.08);
-    }
-
-    .card h2 {
-      font-size: 22px;
-      color: #1f2937;
-      margin-bottom: 8px;
-    }
-
-    .card-subtitle {
-      font-size: 14px;
-      color: #6b7280;
-      margin-bottom: 24px;
-    }
-
-    /* FORMULARIO */
-    .input-group-row {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 15px;
-      margin-bottom: 15px;
-    }
-
-    @media (max-width: 550px) {
-      .input-group-row {
-        grid-template-columns: 1fr;
-      }
-    }
-
-    .input-group {
-      margin-bottom: 15px;
-    }
-
-    .input-group label {
-      display: block;
-      font-size: 13px;
-      font-weight: 600;
-      color: #374151;
-      margin-bottom: 6px;
-    }
-
-    .input-group input, 
-    .input-group select, 
-    .input-group textarea {
-      width: 100%;
-      padding: 12px;
-      border: 1px solid #d1d5db;
-      border-radius: 8px;
-      font-family: inherit;
-      font-size: 14px;
-      background: #fff;
-      color: #1f2937;
-      transition: border-color 0.2s;
-    }
-
-    .input-group input:focus, 
-    .input-group select:focus, 
-    .input-group textarea:focus {
-      outline: none;
-      border-color: #4f46e5;
-    }
-
-    .optional-text {
-      font-weight: 400;
-      color: #9ca3af;
-      font-size: 12px;
-    }
-
-    .checkbox-group {
+      padding: 15px 30px;
       display: flex;
-      align-items: flex-start;
-      gap: 10px;
-      margin: 20px 0;
-      font-size: 13px;
-      color: #4b5563;
-    }
-
-    .checkbox-group input {
-      margin-top: 3px;
-    }
-
-    .btn-primary {
-      background-color: #4f46e5;
-      color: #fff;
-      width: 100%;
-      padding: 14px;
-      border: none;
-      border-radius: 8px;
-      font-size: 16px;
-      font-weight: 700;
-      cursor: pointer;
-      transition: background 0.2s;
-    }
-
-    .btn-primary:hover {
-      background-color: #4338ca;
-    }
-
-    /* TARJETA SECUNDARIA MEJORADA */
-    .card-secondary {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      text-align: center;
-      background: #ffffff;
-      border: 1px solid #e2e8f0;
-      gap: 16px;
-      padding: 20px; /* Ajustado para aprovechar todo el ancho con las imágenes */
-    }
-
-    .banbif-image-wrapper {
-      width: 100%;
-    }
-
-    /* FOTO SUPERIOR: Más grande, ocupando todo el ancho y sin espacios laterales */
-    .banbif-img-full {
-      width: 100%;
-      height: 380px;
-      object-fit: cover;
-      border-radius: 12px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.06);
-      display: block;
-    }
-
-    /* FOTO INFERIOR DEL EQUIPO */
-    .banbif-img-vertical {
-      width: 100%;
-      height: 170px;
-      object-fit: cover;
-      border-radius: 12px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.08);
-      display: block;
-    }
-
-    .info-content {
-      padding: 0 10px;
-    }
-
-    .info-content h3 {
-      font-size: 17px;
-      margin-bottom: 4px;
-      color: #1e293b;
-    }
-
-    .info-content p {
-      font-size: 12px;
-      color: #64748b;
-      margin-bottom: 6px;
-    }
-
-    .btn-link {
-      color: #4f46e5;
-      text-decoration: none;
-      font-weight: 600;
-      font-size: 13px;
-    }
-
-    .btn-link:hover {
-      text-decoration: underline;
-    }
-
-    /* CAJA DE PROPÓSITO INTEGRADA */
-    .purpose-box {
-      width: 100%;
-      background: linear-gradient(135deg, #7c3aed, #4f46e5);
-      color: #fff;
-      padding: 14px 16px;
-      border-radius: 10px;
-      text-align: center;
-      box-shadow: 0 4px 12px rgba(124, 58, 237, 0.2);
-    }
-
-    .purpose-title {
-      font-size: 11px;
-      font-weight: 700;
-      letter-spacing: 1px;
-      text-transform: uppercase;
-      opacity: 0.85;
-      margin-bottom: 4px;
-    }
-
-    .purpose-text {
-      font-size: 13px;
-      font-style: italic;
-      font-weight: 600;
-      line-height: 1.4;
-    }
-
-    /* SECCIONES Y BANTERS */
-    .section-banner {
-      background: linear-gradient(135deg, #ec4899, #8b5cf6);
-      color: #fff;
-      padding: 15px 25px;
-      border-radius: 12px;
-      font-weight: 700;
-      font-size: 15px;
-      text-align: center;
-      margin: 40px 0 25px 0;
-      letter-spacing: 0.5px;
-    }
-
-    .subsection-title {
-      font-size: 20px;
-      font-weight: 700;
-      color: #1f2937;
-      margin: 30px 0 20px 0;
-    }
-
-    /* GRILLA DE OFERTAS LABORALES */
-    .jobs-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 20px;
-    }
-
-    .job-card {
-      background: #fff;
-      border-radius: 12px;
-      padding: 24px;
-      border: 1px solid #e5e7eb;
-      position: relative;
-      box-shadow: 0 4px 6px rgba(0,0,0,0.02);
-      display: flex;
-      flex-direction: column;
       justify-content: space-between;
-    }
-
-    .job-badge {
-      position: absolute;
-      top: 20px;
-      right: 20px;
-      background: #dbeafe;
-      color: #1d4ed8;
-      font-size: 11px;
-      font-weight: 700;
-      padding: 4px 10px;
-      border-radius: 20px;
-    }
-
-    .job-card h4 {
-      font-size: 16px;
-      color: #111827;
-      margin-bottom: 8px;
-      padding-right: 60px;
-    }
-
-    .job-details {
-      font-size: 12px;
-      color: #6b7280;
-      margin-bottom: 12px;
-    }
-
-    .job-desc {
-      font-size: 13px;
-      color: #4b5563;
-      margin-bottom: 20px;
-    }
-
-    .job-actions {
-      display: flex;
-      gap: 10px;
-      flex-wrap: wrap;
-    }
-
-    .btn-linkedin {
-      background-color: #0a66c2;
-      color: #fff;
-      padding: 8px 14px;
-      border-radius: 6px;
-      text-decoration: none;
-      font-size: 13px;
-      font-weight: 600;
-      display: inline-flex;
       align-items: center;
-      transition: background 0.2s;
+      flex-wrap: wrap;
+      gap: 15px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
     }
 
-    .btn-linkedin:hover {
-      background-color: #004182;
-    }
-
-    /* SECCIÓN DE LOGROS / LINKEDIN POST */
-    .linkedin-post-card {
-      background: #fff;
-      border-radius: 12px;
-      padding: 24px;
-      border: 1px solid #e5e7eb;
-      box-shadow: 0 4px 6px rgba(0,0,0,0.02);
+    .brand-area {
       display: flex;
-      flex-direction: column;
+      align-items: center;
       gap: 15px;
     }
 
-    .linkedin-header {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-    }
-
-    .linkedin-logo-badge {
-      background: #0a66c2;
-      color: white;
-      width: 40px;
-      height: 40px;
+    .brand-logo {
+      background: #fff;
+      color: #4f46e5;
+      font-weight: 800;
+      padding: 6px 14px;
       border-radius: 8px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-weight: bold;
       font-size: 18px;
     }
 
-    .linkedin-meta h5 {
-      font-size: 15px;
-      color: #111827;
+    .brand-texts h1 {
+      font-size: 16px;
+      font-weight: 700;
     }
 
-    .linkedin-meta span {
+    .brand-texts p {
       font-size: 12px;
-      color: #6b7280;
+      opacity: 0.9;
     }
 
-    .linkedin-content p {
-      font-size: 14px;
+    .status-badge {
+      background: #10b981;
+      color: #fff;
+      padding: 5px 12px;
+      border-radius: 20px;
+      font-size: 12px;
+      font-weight: 600;
+    }
+
+    /* BARRA DE FILTROS Y ACCIONES */
+    .filters-container {
+      background: #fff;
+      padding: 15px 30px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 15px;
+      border-bottom: 1px solid #e5e7eb;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+    }
+
+    .filter-group {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+      flex: 1;
+    }
+
+    .filters-container input,
+    .filters-container select {
+      padding: 8px 12px;
+      border: 1px solid #d1d5db;
+      border-radius: 6px;
+      font-size: 13px;
+      outline: none;
+      background: #fff;
+    }
+
+    .filters-container input {
+      min-width: 240px;
+    }
+
+    .btn-action {
+      background: #f3f4f6;
+      border: 1px solid #d1d5db;
+      padding: 8px 14px;
+      border-radius: 6px;
+      font-size: 13px;
+      font-weight: 600;
+      cursor: pointer;
       color: #374151;
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      transition: background 0.2s;
+      text-decoration: none;
     }
 
-    .hidden { display: none !important; }
+    .btn-action:hover {
+      background: #e5e7eb;
+    }
+
+    .btn-export-excel {
+      background: #10b981;
+      color: white;
+      border-color: #059669;
+    }
+    .btn-export-excel:hover {
+      background: #059669;
+      color: white;
+    }
+
+    .btn-export-csv {
+      background: #3b82f6;
+      color: white;
+      border-color: #2563eb;
+    }
+    .btn-export-csv:hover {
+      background: #2563eb;
+      color: white;
+    }
+
+    .counter-badge {
+      font-size: 13px;
+      font-weight: 600;
+      color: #4f46e5;
+    }
+
+    /* CONTENEDOR DE LA TABLA */
+    .table-container {
+      padding: 25px 30px;
+      overflow-x: auto;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      background: #fff;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.02);
+      font-size: 13px;
+    }
+
+    th, td {
+      padding: 12px 15px;
+      text-align: left;
+      border-bottom: 1px solid #f3f4f6;
+    }
+
+    th {
+      background: #f8fafc;
+      font-weight: 600;
+      color: #475569;
+      white-space: nowrap;
+    }
+
+    tr:hover {
+      background: #f8fafc;
+    }
   </style>
 </head>
 <body>
 
-  <!-- HEADER DE BIENVENIDA -->
-  <header class="hero-header">
-    <div class="hero-content">
-      <div class="logo-box">BanBif</div>
-      <h1 class="main-title">TALENTO BANBIF</h1>
-      <p class="tagline">#TuProximoPasoEmpiezaAqui</p>
+  <!-- HEADER -->
+  <div class="top-bar">
+    <div class="brand-area">
+      <div class="brand-logo">BanBif</div>
+      <div class="brand-texts">
+        <h1>Base de Datos de Talento</h1>
+        <p>Gestión de Postulantes y Prácticas Preprofesionales</p>
+      </div>
     </div>
-  </header>
+    <div class="status-badge">🟢 Sincronización Activa</div>
+  </div>
 
-  <!-- CONTENEDOR PRINCIPAL -->
-  <main class="container">
-    
-    <div class="cards-grid">
+  <!-- BARRA DE FILTROS Y ACCIONES -->
+  <div class="filters-container">
+    <div class="filter-group">
+      <input type="text" id="searchInput" placeholder="🔍 Buscar por Nombre, DNI, Correo..." onkeyup="filtrarTabla()">
       
-      <!-- FORMULARIO DE CAPTACIÓN -->
-      <div class="card" id="registro">
-        <h2>Únete a nuestra base de talento</h2>
-        <p class="card-subtitle">Déjanos tus datos para recibir información sobre prácticas y convocatorias.</p>
-        
-        <form id="formBanBif" name="postulaciones" method="POST" data-netlify="true" enctype="multipart/form-data">
-          
-          <input type="hidden" name="form-name" value="postulaciones" />
+      <select id="filtroArea" onchange="filtrarTabla()">
+        <option value="">Todas las Áreas</option>
+        <option value="Inversiones">Inversiones</option>
+        <option value="Producto">Producto</option>
+        <option value="Finanzas">Finanzas</option>
+        <option value="Recursos Humanos">Recursos Humanos</option>
+        <option value="Riesgos">Riesgos</option>
+        <option value="Área comercial">Área comercial</option>
+        <option value="Tecnología">Tecnología</option>
+        <option value="Marketing">Marketing</option>
+        <option value="Operaciones">Operaciones</option>
+        <option value="Legal">Legal</option>
+        <option value="Procesos">Procesos</option>
+        <option value="Mercado de Capitales">Mercado de Capitales</option>
+      </select>
 
-          <div class="input-group-row">
-            <div class="input-group">
-              <label for="nombres">Nombres y Apellidos *</label>
-              <input type="text" id="nombres" name="nombres" placeholder="Ej. Ana Pérez" required>
-            </div>
-            <div class="input-group">
-              <label for="dni">DNI / Documento de Identidad *</label>
-              <input type="text" id="dni" name="dni" placeholder="Ej. 76543210" maxlength="12" required>
-            </div>
-          </div>
+      <select id="filtroUni" onchange="filtrarTabla()">
+        <option value="">Todas las Universidades</option>
+        <option value="PUCP">PUCP</option>
+        <option value="UP">UP</option>
+        <option value="Universidad de Lima">Universidad de Lima</option>
+        <option value="UPC">UPC</option>
+        <option value="UNMSM">UNMSM</option>
+        <option value="UNI">UNI</option>
+        <option value="USIL">USIL</option>
+        <option value="UDEP">UDEP</option>
+        <option value="URP">URP</option>
+        <option value="Universidad ESAN">Universidad ESAN</option>
+        <option value="UNALM">UNALM</option>
+        <option value="UTP">UTP</option>
+      </select>
 
-          <!-- UNIVERSIDAD -->
-          <div class="input-group">
-            <label for="universidad">Universidad *</label>
-            <select id="universidad" name="universidad" required onchange="checkOtraUni(this.value)">
-              <option value="">Selecciona Universidad...</option>
-              <option value="PUCP">Pontificia Universidad Católica del Perú (PUCP)</option>
-              <option value="UP">Universidad del Pacífico (UP)</option>
-              <option value="Universidad de Lima (UL)">Universidad de Lima (UL)</option>
-              <option value="UPC">Universidad Peruana de Ciencias Aplicadas (UPC)</option>
-              <option value="UNMSM">Universidad Nacional Mayor de San Marcos (UNMSM)</option>
-              <option value="UNI">Universidad Nacional de Ingeniería (UNI)</option>
-              <option value="UPCH">Universidad Peruana Cayetano Heredia (UPCH)</option>
-              <option value="USIL">Universidad San Ignacio de Loyola (USIL)</option>
-              <option value="UDEP">Universidad de Piura (UDEP)</option>
-              <option value="URP">Universidad Ricardo Palma (URP)</option>
-              <option value="Universidad ESAN">Universidad ESAN</option>
-              <option value="UNALM">Universidad Nacional Agraria La Molina (UNALM)</option>
-              <option value="UNFV">Universidad Nacional Federico Villarreal (UNFV)</option>
-              <option value="UTP">Universidad Tecnológica del Perú (UTP)</option>
-              <option value="UCSUR">Universidad Científica del Sur (UCSUR)</option>
-              <option value="UCV">Universidad César Vallejo (UCV)</option>
-              <option value="UPN">Universidad Privada del Norte (UPN)</option>
-              <option value="UNW">Universidad Norbert Wiener (UNW)</option>
-              <option value="Otros">Otro / Especifique</option>
-            </select>
-          </div>
-
-          <div class="input-group hidden" id="otraUniContainer">
-            <label for="otraUniversidad">Especifique su Universidad *</label>
-            <input type="text" id="otraUniversidad" name="otraUniversidad" placeholder="Ej. Universidad Nacional de Trujillo">
-          </div>
-
-          <div class="input-group-row">
-            <!-- CARRERA -->
-            <div class="input-group">
-              <label for="carrera">Carrera *</label>
-              <select id="carrera" name="carrera" required onchange="checkOtraCarrera(this.value)">
-                <option value="">Selecciona Carrera...</option>
-                <option value="Administración">Administración</option>
-                <option value="Comunicaciones">Comunicaciones</option>
-                <option value="Contabilidad">Contabilidad</option>
-                <option value="Economía">Economía</option>
-                <option value="Estadística">Estadística</option>
-                <option value="Finanzas">Finanzas</option>
-                <option value="Gestión y alta dirección">Gestión y alta dirección</option>
-                <option value="Ingeniería Industrial">Ingeniería Industrial</option>
-                <option value="Ingeniería de Sistemas">Ingeniería de Sistemas</option>
-                <option value="Ingeniería de Software">Ingeniería de Software</option>
-                <option value="Ingeniería de Gestión Empresarial">Ingeniería de Gestión Empresarial</option>
-                <option value="Marketing">Marketing</option>
-                <option value="Negocios Internacionales">Negocios Internacionales</option>
-                <option value="Psicología">Psicología</option>
-                <option value="Otros">Otro / Especifique</option>
-              </select>
-            </div>
-            
-            <!-- CICLO -->
-            <div class="input-group">
-              <label for="ciclo">Ciclo *</label>
-              <select id="ciclo" name="ciclo" required>
-                <option value="">Selecciona Ciclo...</option>
-                <option value="1er Ciclo">1er Ciclo</option>
-                <option value="2do Ciclo">2do Ciclo</option>
-                <option value="3er Ciclo">3er Ciclo</option>
-                <option value="4to Ciclo">4to Ciclo</option>
-                <option value="5to Ciclo">5to Ciclo</option>
-                <option value="6to Ciclo">6to Ciclo</option>
-                <option value="7mo Ciclo">7mo Ciclo</option>
-                <option value="8vo Ciclo">8vo Ciclo</option>
-                <option value="9no Ciclo">9no Ciclo</option>
-                <option value="10mo Ciclo">10mo Ciclo</option>
-                <option value="11avo Ciclo">11avo Ciclo</option>
-                <option value="12avo Ciclo">12avo Ciclo</option>
-              </select>
-            </div>
-          </div>
-
-          <div class="input-group hidden" id="otraCarreraContainer">
-            <label for="otraCarrera">Especifique su Carrera *</label>
-            <input type="text" id="otraCarrera" name="otraCarrera" placeholder="Ej. Biología">
-          </div>
-
-          <!-- ÁREA DE INTERÉS -->
-          <div class="input-group">
-            <label for="areaInteres">Área de Interés en BanBif *</label>
-            <select id="areaInteres" name="areaInteres" required onchange="checkOtraArea(this.value)">
-              <option value="">Selecciona Área de Interés...</option>
-              <option value="Inversiones">Inversiones</option>
-              <option value="Producto">Producto</option>
-              <option value="Finanzas">Finanzas</option>
-              <option value="Recursos Humanos">Recursos Humanos</option>
-              <option value="Riesgos">Riesgos</option>
-              <option value="Área comercial">Área comercial</option>
-              <option value="Tecnología">Tecnología</option>
-              <option value="Marketing">Marketing</option>
-              <option value="Operaciones">Operaciones</option>
-              <option value="Legal">Legal</option>
-              <option value="Procesos">Procesos</option>
-              <option value="Mercado de Capitales">Mercado de Capitales</option>
-              <option value="Otros">Otro / Especifique</option>
-            </select>
-          </div>
-
-          <div class="input-group hidden" id="otraAreaContainer">
-            <label for="otraArea">Especifique su Área de Interés *</label>
-            <input type="text" id="otraArea" name="otraArea" placeholder="Ej. Auditoría Interna">
-          </div>
-
-          <div class="input-group-row">
-            <div class="input-group">
-              <label for="correo">Correo Electrónico *</label>
-              <input type="email" id="correo" name="correo" placeholder="correo@ejemplo.com" required>
-            </div>
-            <div class="input-group">
-              <label for="celular">Celular *</label>
-              <input type="tel" id="celular" name="celular" placeholder="987654321" required>
-            </div>
-          </div>
-
-          <div class="input-group">
-            <label for="disponibilidad">Disponibilidad de Horario (30h semanales) *</label>
-            <textarea id="disponibilidad" name="disponibilidad" rows="2" placeholder="Ej. Mañanas libres de 8am a 2pm" required></textarea>
-          </div>
-
-          <div class="input-group-row">
-            <div class="input-group">
-              <label for="cv">Adjunta tu CV <span class="optional-text">(Opcional)</span></label>
-              <input type="file" id="cv" name="cv" accept=".pdf,.doc,.docx">
-            </div>
-            <div class="input-group">
-              <label for="horario_file">Adjunta tu Horario <span class="optional-text">(Opcional)</span></label>
-              <input type="file" id="horario_file" name="horario_file" accept=".pdf,.png,.jpg,.jpeg">
-            </div>
-          </div>
-
-          <div class="checkbox-group">
-            <input type="checkbox" id="politica" name="politica" required>
-            <label for="politica">Acepto el tratamiento de mis datos personales (Ley N° 29733).</label>
-          </div>
-
-          <button type="submit" class="btn-primary">🚀 Registrarme</button>
-        </form>
-      </div>
-
-      <!-- TARJETA DERECHA: IMAGEN GRANDE Y COMPLETA SIN BORDES ROSADOS -->
-      <div class="card card-secondary">
-        
-        <!-- FOTO SUPERIOR DEL BANCO (Vertical grande a todo ancho) -->
-        <div class="banbif-image-wrapper">
-          <img src="images/1521070256785.jpg" alt="Edificio BanBif" class="banbif-img-full">
-        </div>
-
-        <!-- TEXTO CENTRAL -->
-        <div class="info-content">
-          <h3>¡Conoce más de BanBif!</h3>
-          <p>Descubre nuestra cultura, beneficios y por qué somos uno de los mejores lugares para empezar tu carrera.</p>
-          <a href="https://www.banbif.com.pe/trabaja-con-nosotros" class="btn-link" target="_blank">Visítanos aquí →</a>
-        </div>
-
-        <!-- CAJA DE PROPÓSITO -->
-        <div class="purpose-box">
-          <div class="purpose-title">Nuestro Propósito</div>
-          <div class="purpose-text">“Acompañamos sueños, generamos desarrollo”</div>
-        </div>
-
-        <!-- FOTO INFERIOR DEL EQUIPO -->
-        <div class="banbif-image-wrapper">
-          <img src="images/foto-03.jpg" alt="Equipo BanBif" class="banbif-img-vertical">
-        </div>
-
-      </div>
-
+      <button class="btn-action" onclick="limpiarFiltros()">Limpiar</button>
+      <button class="btn-action" onclick="cargarDatos()">🔄 Actualizar</button>
     </div>
 
-    <!-- BANNER DE NOVEDADES -->
-    <div class="section-banner">
-      📢 CONVOCATORIAS ABIERTAS Y CONTENIDO RECIENTE
+    <div class="filter-group" style="justify-content: flex-end; flex: initial;">
+      <span class="counter-badge" id="contadorPostulantes">0 postulante(s)</span>
+      <button class="btn-action btn-export-excel" onclick="exportarExcel()">📊 Exportar Excel</button>
+      <button class="btn-action btn-export-csv" onclick="exportarCSV()">📁 Exportar CSV</button>
     </div>
+  </div>
 
-    <!-- SECCIÓN DE OFERTAS LABORALES -->
-    <h3 class="subsection-title">💼 Ofertas para Prácticas Preprofesionales</h3>
-    <div class="jobs-grid">
-      
-      <div class="job-card">
-        <span class="job-badge">Activa</span>
-        <h4>Practicante Pre Profesional de Financiamientos Estructurados</h4>
-        <p class="job-details">📍 San Isidro (Híbrido) | 🎓 Estudiantes universitarios</p>
-        <p class="job-desc">
-          <strong>¿Cuál será tu reto?</strong><br>
-          • Asistir en la evaluación crediticia y estructuración de financiamientos.<br>
-          • Solicitar información a clientes para propuestas de crédito y elaborar presentaciones para negociación y comités internos.<br>
-          • Apoyar en funciones asignadas por el jefe inmediato o gerente del área.
-        </p>
-        <div class="job-actions">
-          <a href="https://www.linkedin.com/jobs/view/4465860864/" target="_blank" class="btn-linkedin" style="width: 100%; text-align: center; justify-content: center;">Postular en LinkedIn 🔗</a>
-        </div>
-      </div>
+  <!-- TABLA DE DATOS -->
+  <div class="table-container">
+    <table id="tablaPostulantes">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Fecha / Hora</th>
+          <th>Nombres y Apellidos</th>
+          <th>DNI</th>
+          <th>Área de Interés</th>
+          <th>Universidad</th>
+          <th>Carrera</th>
+          <th>Ciclo</th>
+          <th>Correo Electrónico</th>
+          <th>Celular</th>
+          <th>Disponibilidad (30h)</th>
+        </tr>
+      </thead>
+      <tbody id="cuerpoTabla">
+        <tr>
+          <td colspan="11" style="text-align: center; color: #6b7280; padding: 20px;">Cargando postulantes desde Google Sheets...</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
 
-    </div>
-
-    <!-- SECCIÓN DE LOGROS / LINKEDIN POSTS -->
-    <h3 class="subsection-title">🏆 Orgullo BanBif en LinkedIn</h3>
-    <div class="jobs-grid">
-
-      <div class="linkedin-post-card">
-        <div class="linkedin-header">
-          <div class="linkedin-logo-badge">in</div>
-          <div class="linkedin-meta">
-            <h5>BanBif • Publicación Oficial</h5>
-            <span>Top 13 Mejores Lugares para Hacer Prácticas 🚀</span>
-          </div>
-        </div>
-        <div class="linkedin-content">
-          <p>¡Seguimos sumando logros! Nos emociona compartir que gracias a nuestro gran equipo, nos ubicamos en el <strong>Top 13 del ranking de Best Place to Work for Youth / BIE</strong> como uno de los mejores lugares para hacer prácticas en el Perú.</p>
-        </div>
-        <div>
-          <a href="https://www.linkedin.com/posts/banbif_orgullobanbif-equipobanbif-bieperu-activity-7506776453351362560-khKd" target="_blank" class="btn-linkedin">
-            Ver publicación en LinkedIn 🔗
-          </a>
-        </div>
-      </div>
-
-      <div class="linkedin-post-card">
-        <div class="linkedin-header">
-          <div class="linkedin-logo-badge">in</div>
-          <div class="linkedin-meta">
-            <h5>BanBif • Publicación Oficial</h5>
-            <span>¡Olimpiadas BanBif! 🏅</span>
-          </div>
-        </div>
-        <div class="linkedin-content">
-          <p>¡Fomentamos la integración y el deporte! Compartimos los mejores momentos de nuestras <strong>Olimpiadas BanBif</strong>, donde nuestro equipo demuestra energía, unión y pasión más allá de las oficinas.</p>
-        </div>
-        <div>
-          <a href="https://www.linkedin.com/posts/banbif_orgullobanbif-equipobanbif-olimpiadasbanbif-activity-7506478964568190976-VZgV" target="_blank" class="btn-linkedin">
-            Ver publicación en LinkedIn 🔗
-          </a>
-        </div>
-      </div>
-
-    </div>
-    
-  </main>
-
-  <!-- SCRIPTS -->
+  <!-- SCRIPT DE CONEXIÓN, FILTRADO Y EXPORTACIÓN -->
   <script>
-    const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbyvMzkY_l94kPKV0vVeXWAYnfH8pWyIZGgo51QW8CRHu8sPh0_3vPSTFpo2JaYPvIIQ/exec';
+    const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxlOrO4m66yf4cFae-ExlwFYcTTd3CCbxDhAHcaN4TuB-QQGpZGeY0Nb-ZSTVN6Q4w/exec';
 
-    function checkOtraUni(valor) {
-      const contenedor = document.getElementById('otraUniContainer');
-      const inputTexto = document.getElementById('otraUniversidad');
-      if (valor === 'Otros' || valor === 'Otro' || valor === 'Otra') {
-        contenedor.classList.remove('hidden');
-        inputTexto.setAttribute('required', 'true');
-      } else {
-        contenedor.classList.add('hidden');
-        inputTexto.removeAttribute('required');
-        inputTexto.value = '';
-      }
+    function cargarDatos() {
+      fetch(SCRIPT_URL)
+        .then(response => response.json())
+        .then(data => {
+          const tbody = document.getElementById('cuerpoTabla');
+          tbody.innerHTML = '';
+
+          if (!data || data.length === 0) {
+            tbody.innerHTML = '<tr><td colspan="11" style="text-align: center; color: #6b7280; padding: 20px;">No hay postulantes registrados todavía.</td></tr>';
+            document.getElementById('contadorPostulantes').textContent = "0 postulante(s)";
+            return;
+          }
+
+          data.forEach((fila, index) => {
+            let tr = document.createElement('tr');
+            tr.innerHTML = `
+              <td>${index + 1}</td>
+              <td>${fila.fecha || ''}</td>
+              <td>${fila.nombres || ''}</td>
+              <td>${fila.dni || ''}</td>
+              <td>${fila.areaInteres || ''}</td>
+              <td>${fila.universidad || ''}</td>
+              <td>${fila.carrera || ''}</td>
+              <td>${fila.ciclo || ''}</td>
+              <td>${fila.correo || ''}</td>
+              <td>${fila.celular || ''}</td>
+              <td>${fila.disponibilidad || ''}</td>
+            `;
+            tbody.appendChild(tr);
+          });
+
+          filtrarTabla();
+        })
+        .catch(error => {
+          console.error('Error al cargar los datos:', error);
+          document.getElementById('cuerpoTabla').innerHTML = '<tr><td colspan="11" style="text-align: center; color: #ef4444; padding: 20px;">Error al conectar con la base de datos. Verifica los permisos de tu Apps Script.</td></tr>';
+        });
     }
 
-    function checkOtraCarrera(valor) {
-      const contenedor = document.getElementById('otraCarreraContainer');
-      const inputTexto = document.getElementById('otraCarrera');
-      if (valor === 'Otros' || valor === 'Otro' || valor === 'Otra') {
-        contenedor.classList.remove('hidden');
-        inputTexto.setAttribute('required', 'true');
-      } else {
-        contenedor.classList.add('hidden');
-        inputTexto.removeAttribute('required');
-        inputTexto.value = '';
+    function filtrarTabla() {
+      const input = document.getElementById('searchInput').value.toLowerCase();
+      const filtroArea = document.getElementById('filtroArea').value.toLowerCase();
+      const filtroUni = document.getElementById('filtroUni').value.toLowerCase();
+      
+      const tabla = document.getElementById('tablaPostulantes');
+      const filas = tabla.getElementsByTagName('tr');
+      let contadorVisible = 0;
+
+      for (let i = 1; i < filas.length; i++) {
+        const fila = filas[i];
+        if (fila.cells.length <= 1) continue;
+        
+        const textoFila = fila.textContent.toLowerCase();
+        const areaCelda = fila.cells[4] ? fila.cells[4].textContent.toLowerCase() : '';
+        const uniCelda = fila.cells[5] ? fila.cells[5].textContent.toLowerCase() : '';
+
+        const coincideTexto = textoFila.includes(input);
+        const coincideArea = filtroArea === "" || areaCelda.includes(filtroArea);
+        const coincideUni = filtroUni === "" || uniCelda.includes(filtroUni);
+
+        if (coincideTexto && coincideArea && coincideUni) {
+          fila.style.display = "";
+          contadorVisible++;
+        } else {
+          fila.style.display = "none";
+        }
       }
+
+      document.getElementById('contadorPostulantes').textContent = contadorVisible + " postulante(s)";
     }
 
-    function checkOtraArea(valor) {
-      const contenedor = document.getElementById('otraAreaContainer');
-      const inputTexto = document.getElementById('otraArea');
-      if (valor === 'Otros' || valor === 'Otro' || valor === 'Otra') {
-        contenedor.classList.remove('hidden');
-        inputTexto.setAttribute('required', 'true');
-      } else {
-        contenedor.classList.add('hidden');
-        inputTexto.removeAttribute('required');
-        inputTexto.value = '';
-      }
+    function limpiarFiltros() {
+      document.getElementById('searchInput').value = "";
+      document.getElementById('filtroArea').value = "";
+      document.getElementById('filtroUni').value = "";
+      filtrarTabla();
     }
 
-    const form = document.getElementById('formBanBif');
-    const btnSubmit = form.querySelector('button[type="submit"]');
+    function exportarCSV() {
+      const tabla = document.getElementById('tablaPostulantes');
+      let filas = tabla.querySelectorAll('tr');
+      let csv = [];
 
-    form.addEventListener('submit', function(e) {
-      e.preventDefault();
-
-      let selectUni = document.getElementById('universidad');
-      if (selectUni.value === 'Otros' || selectUni.value === 'Otro' || selectUni.value === 'Otra') {
-        selectUni.value = document.getElementById('otraUniversidad').value;
+      for (let i = 0; i < filas.length; i++) {
+        if (filas[i].style.display === "none") continue;
+        
+        let fila = [], cols = filas[i].querySelectorAll('td, th');
+        for (let j = 0; j < cols.length; j++) {
+          let data = cols[j].innerText.replace(/(\r\n|\n|\r)/gm, "").replace(/(\s+)/gm, " ");
+          fila.push('"' + data.replace(/"/g, '""') + '"');
+        }
+        csv.push(fila.join(','));
       }
 
-      let selectCarrera = document.getElementById('carrera');
-      if (selectCarrera.value === 'Otros' || selectCarrera.value === 'Otro' || selectCarrera.value === 'Otra') {
-        selectCarrera.value = document.getElementById('otraCarrera').value;
-      }
+      let blob = new Blob([csv.join('\n')], { type: 'text/csv;charset=utf-8;' });
+      let link = document.createElement('a');
+      link.href = URL.createObjectURL(blob);
+      link.download = 'Base_Talento_BanBif.csv';
+      link.click();
+    }
 
-      let selectArea = document.getElementById('areaInteres');
-      if (selectArea.value === 'Otros' || selectArea.value === 'Otro' || selectArea.value === 'Otra') {
-        selectArea.value = document.getElementById('otraArea').value;
-      }
+    function exportarExcel() {
+      const tabla = document.getElementById('tablaPostulantes');
+      let html = tabla.outerHTML;
+      let blob = new Blob(['\ufeff' + html], { type: 'application/vnd.ms-excel' });
+      let link = document.createElement('a');
+      link.href = URL.createObjectURL(blob);
+      link.download = 'Base_Talento_BanBif.xls';
+      link.click();
+    }
 
-      const originalText = btnSubmit.innerHTML;
-      btnSubmit.innerHTML = '⌛ Enviando registro...';
-      btnSubmit.disabled = true;
-
-      const formData = new FormData(form);
-
-      fetch(SCRIPT_URL, {
-        method: 'POST',
-        body: formData
-      })
-      .then(response => response.json())
-      .then(data => {
-        alert('¡Registro exitoso! Tus datos han sido guardados correctamente.');
-        form.reset();
-        document.getElementById('otraUniContainer').classList.add('hidden');
-        document.getElementById('otraCarreraContainer').classList.add('hidden');
-        document.getElementById('otraAreaContainer').classList.add('hidden');
-      })
-      .catch(error => {
-        alert('¡Registro exitoso! Tus datos han sido registrados correctamente.');
-        form.reset();
-        document.getElementById('otraUniContainer').classList.add('hidden');
-        document.getElementById('otraCarreraContainer').classList.add('hidden');
-        document.getElementById('otraAreaContainer').classList.add('hidden');
-      })
-      .finally(() => {
-        btnSubmit.innerHTML = originalText;
-        btnSubmit.disabled = false;
-      });
-    });
+    window.onload = function() {
+      cargarDatos();
+    };
   </script>
 </body>
 </html>
